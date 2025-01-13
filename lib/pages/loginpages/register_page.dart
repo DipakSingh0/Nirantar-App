@@ -55,7 +55,7 @@ class _RegisterPageState extends State<RegisterPage> {
        // Save additional user information to Firestore
       await FirebaseFirestore.instance
           .collection('hospitals') // Collection name
-          .doc(userCredential.user?.uid) // Use user UID as the document ID
+          .doc(userCredential.user?.uid) // User UID as the document ID
           .set({
         'hospitalId': _hospitalIdController.text.trim(),
         'hospitalName': _hospitalNameController.text.trim(),
@@ -64,7 +64,7 @@ class _RegisterPageState extends State<RegisterPage> {
         'phoneNumber': _phoneNumberController.text.trim(),
         'address': _addressController.text.trim(),
         'email': _emailController.text.trim(),
-        'createdAt': FieldValue.serverTimestamp(), // Store timestamp
+        'createdAt': FieldValue.serverTimestamp(), 
       });
       // Navigate to the HomePage after successful sign up
       Navigator.pushReplacement(
@@ -73,7 +73,7 @@ class _RegisterPageState extends State<RegisterPage> {
         MaterialPageRoute(builder: (context) => LoginPage()),
       );
     } on FirebaseAuthException catch (e) {
-      // Handle Firebase sign-up errors
+     
       String message;
       switch (e.code) {
         case 'email-already-in-use':

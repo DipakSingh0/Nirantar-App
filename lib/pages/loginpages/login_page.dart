@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 // import 'package:projet/pages/loginpages/password_verification.dart';
 // import 'package:projet/pages/loginpages/register_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:nira/pages/home/home_page.dart';
 import 'package:nira/widgets/bottom_nav_bar.dart';
 
 import 'password_verification.dart';
@@ -37,11 +38,17 @@ class _LoginPageState extends State<LoginPage> {
       );
 
       // If sign in is successful, navigate to HomePage
+      // Navigator.pushReplacement(
+      //   // ignore: use_build_context_synchronously
+      //   context,
+      //   MaterialPageRoute(builder: 
+      //   (context) => MyBottomNavBar()),
+      // );
       Navigator.pushReplacement(
         // ignore: use_build_context_synchronously
         context,
         MaterialPageRoute(builder: 
-        (context) => MyBottomNavBar()),
+        (context) => HomePage()),
       );
     } 
       // else sho the error output on loginpage
