@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 // import 'package:projet/pages/loginpages/register_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:nira/pages/home/home_page.dart';
-import 'package:nira/widgets/bottom_nav_bar.dart';
+// import 'package:nira/widgets/bottom_nav_bar.dart';
 
 import 'password_verification.dart';
 import 'register_page.dart';
