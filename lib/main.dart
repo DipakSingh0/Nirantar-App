@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:nira/firebase_options.dart';
-import 'package:nira/pages/introscreens/introduction_screen.dart';
+import 'package:nira/features/auth/introscreens/introduction_screen.dart';
 // import 'firebase_api.dart';
 // import 'pages/home/home_page.dart';
 import 'widgets/theme/theme.dart';

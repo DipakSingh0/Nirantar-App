@@ -1,16 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:nira/pages/others/contacts_page.dart';
-import 'package:nira/pages/others/notifications_page.dart';
-import 'package:nira/pages/others/settings_page.dart';
-import 'package:nira/pages/profile/profile_page.dart';
-// import 'package:projet/pages/others/contacts_page.dart';
-// import 'package:projet/pages/others/notifications_page.dart';
-// import 'package:projet/pages/others/settings_page.dart';
-// import 'package:projet/pages/profile/profile_page.dart';
 
-import 'custom_divider.dart';
-
-// import 'my_header_drawer.dart';
+import 'package:nira/widgets/imports.dart';
 
 class MyDrawer extends StatefulWidget {
   const MyDrawer({super.key});
