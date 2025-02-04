@@ -1,16 +1,11 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:nira/firebase_options.dart';
-import 'package:nira/features/auth/introscreens/introduction_screen.dart';
-// import 'firebase_api.dart';
-// import 'pages/home/home_page.dart';
-import 'widgets/theme/theme.dart';
+import 'package:nira/imports.dart';
 
-final navigatorKey = GlobalKey<NavigatorState>();
+// final navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
-  BindingBase.debugZoneErrorsAreFatal =true; // hides unnecessary O/P at terminal
+  BindingBase.debugZoneErrorsAreFatal =
+      true; // hides unnecessary O/P at terminal
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   // FirebaseApi firebaseApi = FirebaseApi();
@@ -38,3 +33,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
+// apple@gmail.com

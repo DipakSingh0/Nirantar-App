@@ -3,7 +3,6 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
-  animated_progress_bar
   cloud_firestore
   firebase_auth
   firebase_core

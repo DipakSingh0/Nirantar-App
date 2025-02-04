@@ -1,5 +1,4 @@
-
-import 'package:nira/widgets/imports.dart';
+import 'package:nira/imports.dart';
 
 class MyDrawer extends StatefulWidget {
   const MyDrawer({super.key});
@@ -19,7 +18,9 @@ class _MyDrawerState extends State<MyDrawer> {
         child: Column(
           children: [
             const MyHeaderDrawer(),
-            const SizedBox(height: 10,),
+            const SizedBox(
+              height: 10,
+            ),
             myDrawerList(),
           ],
         ),
@@ -158,7 +159,6 @@ class _MyHeaderDrawerState extends State<MyHeaderDrawer> {
             const SizedBox(
               height: 8,
             ),
-
             Text(
               'Nirantar',
               style: theme.textTheme.displayLarge,
@@ -166,7 +166,6 @@ class _MyHeaderDrawerState extends State<MyHeaderDrawer> {
             const SizedBox(
               height: 8,
             ),
-
             Text(
               'nirantar123@gmail.com',
               style: theme.textTheme.displaySmall,

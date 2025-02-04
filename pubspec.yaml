@@ -39,13 +39,14 @@ dependencies:
   flutter_svg: ^2.0.17
   cached_network_image: ^3.4.1
   avatar_glow: ^3.0.1
-  fl_chart: ^0.69.0
-  firebase_auth: ^5.4.0
+  fl_chart: ^0.70.2
+  firebase_auth: ^5.4.1
   smooth_page_indicator: ^1.2.0+3
   curved_navigation_bar: ^1.0.6
-  cloud_firestore: ^5.6.1
-  animated_progress_bar: ^0.0.3
+  cloud_firestore: ^5.6.2
+  # animated_progress_bar: ^0.0.3
   firebase_core: ^3.10.1
+  shared_preferences: ^2.5.1
   # firebase_messaging: ^15.2.0
 
 dev_dependencies:

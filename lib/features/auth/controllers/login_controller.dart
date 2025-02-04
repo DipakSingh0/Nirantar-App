@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:nira/features/core/home/home_page.dart';
+// ignore_for_file: use_build_context_synchronousl, use_build_context_synchronously
+import 'package:nira/imports.dart';
 
 class LoginController {
   final BuildContext context;
