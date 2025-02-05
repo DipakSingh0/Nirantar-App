@@ -4,16 +4,9 @@ class AvatarGlowWidget extends StatelessWidget {
   const AvatarGlowWidget({
     super.key,
     required this.theme,
-    // required this.height,
-    // required this.width,
   });
 
   final ThemeData theme;
-
-  // final dynamic height;
-
-  // final dynamic width;
-
   @override
   Widget build(BuildContext context) {
     return AvatarGlow(

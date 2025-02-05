@@ -10,15 +10,18 @@ class BlooddataPage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: theme.scaffoldBackgroundColor,
-        appBar: AppBar(
-          toolbarHeight: 80,
-          backgroundColor: theme.appBarTheme.backgroundColor,
-          title: Text(
-            'B L O O D - D A T A',
-            style: theme.textTheme.displayLarge,
-          ),
-          centerTitle: true,
-        ),
+        appBar: MyAppBar(
+            title: 'B L O O D - D A T A',
+            leadingIcon: Icons.arrow_back,
+            onLeadingIconPressed: () => Navigator.pop(context),
+            actionIcon: Icons.info,
+            onActionIconPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PatientInfoPage(),
+                  ));
+            }),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: GridView.count(
@@ -37,10 +40,16 @@ class BlooddataPage extends StatelessWidget {
                 value: "4.0",
                 measure: "M/mm³",
               ),
-              // Padding(
-              //   padding: const EdgeInsets.only(left: 35),
-              //   child: CircularAnimatedWidget(),
-              // ),
+              UserdataContainer(
+                icon: Icon(
+                  Icons.bloodtype,
+                  color: theme.iconTheme.color,
+                  size: 45,
+                ),
+                parameterName: "Spo2",
+                value: "4.0",
+                measure: "M/mm³",
+              ),
               UserdataContainer(
                 icon: Icon(
                   Icons.bloodtype,

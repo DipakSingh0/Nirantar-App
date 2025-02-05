@@ -1,6 +1,6 @@
 import 'package:nira/imports.dart';
 
-class StaticUserContainer extends StatelessWidget {
+class StaticUserContainer extends StatefulWidget {
   final String childName;
   final String parentName;
   final String dobDate;
@@ -16,6 +16,37 @@ class StaticUserContainer extends StatelessWidget {
       required this.contactNumber});
 
   @override
+  State<StaticUserContainer> createState() => _StaticUserContainerState();
+}
+
+class _StaticUserContainerState extends State<StaticUserContainer> {
+  final PatientController _controller = PatientController();
+
+  Map<String, dynamic> patientData = {};
+
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadPatientData();
+  }
+
+  Future<void> _loadPatientData() async {
+    setState(() {
+      isLoading = true;
+    });
+
+    Map<String, dynamic> fetchedData =
+        await _controller.fetchPatientData(context);
+
+    setState(() {
+      patientData = fetchedData;
+      isLoading = false;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     // var screenHeight = MediaQuery.of(context).size.height;
     // var screenWidth = MediaQuery.of(context).size.width;
@@ -27,7 +58,7 @@ class StaticUserContainer extends StatelessWidget {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => User1()),
+            MaterialPageRoute(builder: (context) => PatientPage()),
           );
         },
         child: Container(
@@ -61,35 +92,35 @@ class StaticUserContainer extends StatelessWidget {
                               height: 8,
                             ),
                             Text(
-                              "Name: $childName",
+                              "Name: ${widget.childName}",
                               style: theme.textTheme.labelLarge,
                             ),
                             const SizedBox(
                               height: 8,
                             ),
                             Text(
-                              "Parent Name:\n$parentName",
+                              "Parent Name:\n${widget.parentName}",
                               style: theme.textTheme.labelLarge,
                             ),
                             const SizedBox(
                               height: 8,
                             ),
                             Text(
-                              "Bed Number:$bedNumber",
+                              "Bed Number:${widget.bedNumber}",
                               style: theme.textTheme.labelLarge,
                             ),
                             const SizedBox(
                               height: 8,
                             ),
                             Text(
-                              "DOB:$dobDate",
+                              "DOB:${widget.dobDate}",
                               style: theme.textTheme.labelLarge,
                             ),
                             const SizedBox(
                               height: 8,
                             ),
                             Text(
-                              "Parent Contact:\n$contactNumber",
+                              "Parent Contact:\n${widget.contactNumber}",
                               style: theme.textTheme.labelLarge,
                             ),
                             const SizedBox(
@@ -110,41 +141,44 @@ class StaticUserContainer extends StatelessWidget {
                       mainAxisSpacing: 5.0,
                       children: [
                         UserdataContainer(
-                            icon: Icon(Icons.heart_broken,
-                                color: theme.iconTheme.color, size: 25),
-                            parameterName: "Heart Rate",
-                            value: "120",
-                            measure: "/min"),
+                          icon: Icon(Icons.heart_broken,
+                              size: 45, color: theme.iconTheme.color),
+                          parameterName: "Heart Rate",
+                          value: patientData["heart_rate"] ?? "N/A",
+                          measure: "bpm",
+                        ),
                         UserdataContainer(
-                            icon: Icon(
-                              Icons.air,
-                              color: theme.iconTheme.color,
-                              // size: 25,
-                              size: 20,
-                            ),
-                            parameterName: "Respiration",
-                            value: "12",
-                            measure: "/min"),
+                          icon: Icon(
+                            Icons.air,
+                            color: theme.iconTheme.color,
+                            size: 45,
+                          ),
+                          parameterName: "Respiration",
+                          value:
+                              patientData["respiration"]?.toString() ?? "N/A",
+                          measure: "/min",
+                        ),
                         UserdataContainer(
-                            icon: Icon(
-                              Icons.thermostat,
-                              color: theme.iconTheme.color,
-                              // size: 25,
-                              size: 20,
-                            ),
-                            parameterName: "Temperature",
-                            value: "120",
-                            measure: "°F"),
+                          icon: Icon(
+                            Icons.thermostat,
+                            color: theme.iconTheme.color,
+                            size: 46,
+                          ),
+                          parameterName: "External Temperature",
+                          value:
+                              patientData["temperature"]?.toString() ?? "N/A",
+                          measure: "°F",
+                        ),
                         UserdataContainer(
-                            icon: Icon(
-                              Icons.bloodtype,
-                              color: theme.iconTheme.color,
-                              // size: 25,
-                              size: 20,
-                            ),
-                            parameterName: "SpO2",
-                            value: "12",
-                            measure: "%"),
+                          icon: Icon(
+                            Icons.thermostat,
+                            color: theme.iconTheme.color,
+                            size: 46,
+                          ),
+                          parameterName: "Body Temperature",
+                          value: patientData["body_temp"]?.toString() ?? "N/A",
+                          measure: "°F",
+                        ),
                       ],
                     ),
                   ),

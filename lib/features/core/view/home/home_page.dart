@@ -1,4 +1,3 @@
-
 import 'package:nira/imports.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,6 +11,30 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _containers = [];
 
   // var currentPage = DrawerSections.homepage;
+    final PatientController _controller = PatientController();
+  Map<String, dynamic> patientData = {};
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadPatientData();
+  }
+
+  Future<void> _loadPatientData() async {
+    setState(() {
+      isLoading = true;
+    });
+
+    Map<String, dynamic> fetchedData =
+        await _controller.fetchPatientData(context);
+
+    setState(() {
+      patientData = fetchedData;
+      isLoading = false;
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -22,41 +45,11 @@ class _HomePageState extends State<HomePage> {
         extendBody: true,
         drawer: MyDrawer(),
         // bottomNavigationBar: MyBottomBarWidget(),
-        appBar: AppBar(
-          toolbarHeight: 75,
-          backgroundColor: theme.appBarTheme.backgroundColor,
-          title: Text(
-            'Home Page',
-            style: theme.textTheme.displayLarge,
-          ),
-          centerTitle: true,
-          leading: Builder(
-            builder: (BuildContext context) {
-              return IconButton(
-                icon: Icon(
-                  Icons.menu,
-                  color: theme.iconTheme.color,
-                  size: 32,
-                ),
-                onPressed: () {
-                  Scaffold.of(context).openDrawer();
-                },
-              );
-            },
-          ),
-          actions: [
-            InkWell(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ProfilePage()));
-              },
-              child: Padding(
-                padding: const EdgeInsets.only(right: 10.0),
-                child:
-                    Icon(Icons.person, color: theme.iconTheme.color, size: 32),
-              ),
-            ),
-          ],
+        // appBar: MyAppBar(title: 'H O M E P A G E',),
+        appBar: MyAppBar(title: 'H O M E P A G E' , 
+        // leadingIcon:  ,
+        actionIcon: Icons.person,
+        onActionIconPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage())),
         ),
         body: Column(
           children: [
@@ -66,7 +59,6 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     //......................StaticUserContainer Widget.......................//
                     StaticUserContainer(
-                      // userName: 'hary',
                       childName: 'Mukeshar',
                       parentName: 'Avishek Kumar',
                       dobDate: '2060/01/01',
@@ -74,23 +66,15 @@ class _HomePageState extends State<HomePage> {
                       contactNumber: '9841919333',
                     ),
                     StaticUserContainer(
-                      // userName: 'hary',
                       childName: '',
                       parentName: '',
                       dobDate: '',
                       bedNumber: '',
                       contactNumber: '',
                     ),
-                    StaticUserContainer(
-                      // userName: 'hary',
-                      childName: '',
-                      parentName: '',
-                      dobDate: '',
-                      bedNumber: '',
-                      contactNumber: '',
-                    ),
+                    
 
-                    //..............This is to create dynamic list of containers................//
+              //..............This is to create dynamic list of containers................//
                     SizedBox(
                       height: 300,
                       child: ListView.builder(
@@ -120,7 +104,6 @@ class _HomePageState extends State<HomePage> {
   }
 
 //..............Dynamically created Container...................//
-
   void _addContainer() {
     setState(() {
       _containers.add(_buildContainer(_containers.length + 1));
@@ -135,16 +118,17 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-//..............Dynamically created Container...................//
-  Widget _buildContainer(int index) {
-    var theme = Theme.of(context);
-    // var screenWidth = MediaQuery.of(context).size.width;
-    // var screenHeight = MediaQuery.of(context).size.height;
 
+
+  
+  Widget _buildContainer(int index) {
+    var theme = Theme.of(context) ;
+
+  
     return GestureDetector(
       // Opens the dialog to add a new child on tap
       onTap: () => Navigator.push(
-          context, MaterialPageRoute(builder: (context) => User1())),
+          context, MaterialPageRoute(builder: (context) => PatientPage())),
       // Deletes the container on long press
       onLongPress: () => DialogBoxWidget.showDeleteDialog(
         context,
@@ -154,10 +138,8 @@ class _HomePageState extends State<HomePage> {
       child: Padding(
         padding: const EdgeInsets.all(8),
         child: Container(
-          // height: screenHeight / 4.1,
-          // width: screenWidth / 1.05,
           height: 200,
-          width: 500,
+          width: 480,
           margin: const EdgeInsets.only(top: 10.0),
           decoration: BoxDecoration(
             color: theme.cardTheme.color,
@@ -180,49 +162,26 @@ class _HomePageState extends State<HomePage> {
                         child: Column(
                           spacing: 8,
                           children: [
-                            // const SizedBox(
-                            //   height: 8,
-                            // ),
                             Text(
-                              // "Name: " + childName,
-                              "Name: ",
+                              "Name: XYZ",
                               style: theme.textTheme.bodyLarge,
                             ),
-                            // const SizedBox(
-                            //   height: 8,
-                            // ),
                             Text(
-                              // "Parent Name:\n" + parentName,
-                              "Parent Name:\n",
+                              "Parent Name:\nABC",
                               style: theme.textTheme.bodyLarge,
                             ),
-                            // const SizedBox(
-                            //   height: 8,
-                            // ),
                             Text(
-                              // "Bed Number:" + bedNumber,
-                              "Bed Number:",
+                              "Bed Number: 5",
                               style: theme.textTheme.bodyLarge,
                             ),
-                            // const SizedBox(
-                            //   height: 8,
-                            // ),
                             Text(
-                              // "DOB:" + dobDate,
-                              "DOB:",
+                              "DOB:2081-05-12",
                               style: theme.textTheme.bodyLarge,
                             ),
-                            // const SizedBox(
-                            //   height: 8,
-                            // ),
                             Text(
-                              // "Parent Contact:\n" + contactNumber,
-                              "Parent Contact:\n",
+                              "Parent Contact:\n9841514131",
                               style: theme.textTheme.bodyLarge,
                             ),
-                            // const SizedBox(
-                            //   height: 6,
-                            // ),
                           ],
                         )),
                   ),
@@ -237,39 +196,47 @@ class _HomePageState extends State<HomePage> {
                       crossAxisSpacing: 6.0,
                       mainAxisSpacing: 6.0,
                       children: [
-                        UserdataContainer(
-                            icon: Icon(Icons.heart_broken,
-                                color: theme.iconTheme.color, size: 25),
-                            parameterName: "Heart Rate",
-                            value: "120",
-                            measure: "/min"),
-                        UserdataContainer(
-                            icon: Icon(
-                              Icons.air,
-                              color: theme.iconTheme.color,
-                              size: 25,
-                            ),
-                            parameterName: "Respiration",
-                            value: "12",
-                            measure: "/min"),
-                        UserdataContainer(
-                            icon: Icon(
-                              Icons.thermostat,
-                              color: theme.iconTheme.color,
-                              size: 25,
-                            ),
-                            parameterName: "Temperature",
-                            value: "120",
-                            measure: "°F"),
-                        UserdataContainer(
-                            icon: Icon(
-                              Icons.bloodtype,
-                              color: theme.iconTheme.color,
-                              size: 25,
-                            ),
-                            parameterName: "SpO2",
-                            value: "12",
-                            measure: "%"),
+                         UserdataContainer(
+                          icon: Icon(Icons.heart_broken,
+                              size: 45, color: theme.iconTheme.color),
+                          parameterName: "Heart Rate",
+                          value: patientData["heart_rate"] ?? "N/A",
+                          measure: "bpm",
+                        ),
+                          UserdataContainer(
+                          icon: Icon(
+                            Icons.air,
+                            color: theme.iconTheme.color,
+                            size: 45,
+                          ),
+                          parameterName: "Respiration",
+                          value:
+                              patientData["respiration"]?.toString() ?? "N/A",
+                          measure: "/min",
+                        ),
+                         UserdataContainer(
+                          icon: Icon(
+                            Icons.thermostat,
+                            color: theme.iconTheme.color,
+                            size: 46,
+                          ),
+                          parameterName: "External Temperature",
+                          value:
+                              patientData["temperature"]?.toString() ?? "N/A",
+                          // value: "98.6",
+                          measure: "°F",
+                        ),
+                           UserdataContainer(
+                          icon: Icon(
+                            Icons.thermostat,
+                            color: theme.iconTheme.color,
+                            size: 46,
+                          ),
+                          parameterName: "Body Temperature",
+                          value: patientData["body_temp"]?.toString() ?? "N/A",
+                          // value: "98.6",
+                          measure: "°F",
+                        ),
                       ],
                     ),
                   ),

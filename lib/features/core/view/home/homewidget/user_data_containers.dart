@@ -32,7 +32,7 @@ class UserdataContainer extends StatelessWidget {
         width: 60,
         decoration: BoxDecoration(
           // ignore: deprecated_member_use
-          color: theme.scaffoldBackgroundColor.withOpacity(0.6),
+          color: theme.scaffoldBackgroundColor.withOpacity(0.5),
           borderRadius: BorderRadius.circular(20),
         ),
         child: LayoutBuilder(

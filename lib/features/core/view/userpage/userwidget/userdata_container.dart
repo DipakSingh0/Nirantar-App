@@ -9,6 +9,7 @@ class UserdataContainer extends StatelessWidget {
   final String value;
   final String measure;
   final Icon icon;
+  final Color containerColor;
 
   const UserdataContainer({
     super.key,
@@ -16,28 +17,23 @@ class UserdataContainer extends StatelessWidget {
     required this.value,
     required this.measure,
     required this.icon,
+    required this.containerColor,
+
   });
 
   @override
   Widget build(BuildContext context) {
-    // var screenHeight = MediaQuery.of(context).size.height;
-    // var screenWidth = MediaQuery.of(context).size.width;
-    var theme = Theme.of(context);
-
+    // var theme = Theme.of(context);
     return Container(
-      // height: screenHeight / 6.6,
-      // width: screenWidth / 2.4,
       height: 42,
       width: 50,
       decoration: BoxDecoration(
-        color: theme.cardTheme.color,
+        // color: theme.cardTheme.color,
+        color: containerColor,
         borderRadius: BorderRadius.circular(25),
       ),
       child: LayoutBuilder(
         builder: (context, constraints) {
-          // final availableHeight = constraints.maxHeight;
-          // final availableWidth = constraints.maxWidth;
-
           return Padding(
             padding: const EdgeInsets.all(5.0),
             child: Column(
@@ -46,18 +42,17 @@ class UserdataContainer extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 18.0, left: 3),
+                  //------------icon and parameter Row-------------------//
                   child: Row(
                     children: [
                       Expanded(
                         flex: 1,
                         child: SizedBox(
-                          // width: availableWidth * 0.20,
                           width: 35,
                           child: icon,
                         ),
                       ),
                       SizedBox(
-                        // width: availableWidth * 0.04,
                         width: 5,
                       ),
                       Expanded(
@@ -65,10 +60,10 @@ class UserdataContainer extends StatelessWidget {
                         child: Text(
                           parameterName,
                           style:
-                               Theme.of(context).textTheme.labelMedium?.copyWith(
-                                  fontSize:18 , 
-                                  fontWeight: FontWeight.bold,
-                                ),
+                              Theme.of(context).textTheme.labelMedium?.copyWith(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                         ),
                       ),
                     ],
@@ -76,36 +71,26 @@ class UserdataContainer extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 20.0),
+                  //------------Value Row-------------------//
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         value,
                         style:
-                            // Theme.of(context).textTheme.labelMedium?.copyWith(
-                            //       fontSize: availableHeight *
-                            //           0.18, // Adjust font size based on height
-                            //       fontWeight: FontWeight.bold,
-                            //     ),
-                              Theme.of(context).textTheme.labelMedium?.copyWith(
-                                  fontSize:18 , 
+                            Theme.of(context).textTheme.labelMedium?.copyWith(
+                                  fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                 ),
                       ),
                       SizedBox(
-                        // width: availableWidth * 0.04,
                         width: 8,
                       ),
                       Text(
                         measure,
                         style:
-                            // Theme.of(context).textTheme.labelMedium?.copyWith(
-                            //       fontSize: availableHeight *
-                            //           0.18, // Adjust font size based on height
-                            //       fontWeight: FontWeight.w400,
-                            //     ),
-                                  Theme.of(context).textTheme.labelMedium?.copyWith(
-                                  fontSize: 25 ,
+                            Theme.of(context).textTheme.labelMedium?.copyWith(
+                                  fontSize: 25,
                                   fontWeight: FontWeight.w400,
                                 ),
                       ),

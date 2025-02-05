@@ -106,6 +106,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:nira/features/core/controller/contacts_controller.dart';
+import 'package:nira/widgets/my_appbar_widget.dart';
 
 class ContactsPage extends StatefulWidget {
   const ContactsPage({super.key});
@@ -181,14 +182,12 @@ class _ContactsPageState extends State<ContactsPage> {
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
-      appBar: AppBar(
-        title: Text('Contacts Page', style: theme.textTheme.displayLarge),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.person_add),
-            onPressed: _showAddContactDialog,
-          ),
-        ],
+        appBar: MyAppBar(
+        title: 'C O N T A C T S',
+        leadingIcon:  Icons.arrow_back,
+        onLeadingIconPressed: () => Navigator.pop(context),
+        actionIcon: Icons.person_add,
+        onActionIconPressed: _showAddContactDialog,
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 26.0, left: 16, right: 16),

@@ -23,8 +23,8 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.system,
-      // home: const HomePage(),
-      home: const IntroScreen(),
+      home: const HomePage(),
+      // home: const IntroScreen(),
 
       //  navigatorKey: navigatorKey,
       //  routes: {
