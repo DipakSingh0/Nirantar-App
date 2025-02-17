@@ -58,20 +58,29 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   children: [
                     //......................StaticUserContainer Widget.......................//
+                    // StaticUserContainer(
+                    //   childName: 'Rasma Kumar',
+                    //   parentName: 'Mr Avishek Kumar',
+                    //   dobDate: 'January 15, 2025',
+                    //   bedNumber: '18',
+                    //   contactNumber: '+9779876543212',
+                    // ),
+                    // StaticUserContainer(
+                    //   childName: '',
+                    //   parentName: '',
+                    //   dobDate: '',
+                    //   bedNumber: '',
+                    //   contactNumber: '',
+                    // ),
                     StaticUserContainer(
-                      childName: 'Mukeshar',
-                      parentName: 'Avishek Kumar',
-                      dobDate: '2060/01/01',
-                      bedNumber: '18',
-                      contactNumber: '9841919333',
-                    ),
-                    StaticUserContainer(
-                      childName: '',
-                      parentName: '',
-                      dobDate: '',
-                      bedNumber: '',
-                      contactNumber: '',
-                    ),
+                      childName: 'Rasma Kumar', 
+                      parentName:  'Mr Avishek Kumar', 
+                      dobDate: 'January 15, 2025', 
+                      // bedNumber: bedNumber, 
+                      contactNumber: '+9779876543212', 
+                      gender: 'Female', 
+                      weight: '3.2 kg', 
+                      address: 'Durbar Square, Ktm'),
                     
 
               //..............This is to create dynamic list of containers................//

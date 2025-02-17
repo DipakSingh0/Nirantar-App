@@ -45,8 +45,7 @@ class _PatientPageState extends State<PatientPage> {
             onLeadingIconPressed: () => Navigator.pop(context),
             actionIcon: Icons.info,
             onActionIconPressed: () {
-              Navigator.push(
-                  context,
+              Navigator.push( context,
                   MaterialPageRoute(
                     builder: (context) => PatientInfoPage(),
                   ));
