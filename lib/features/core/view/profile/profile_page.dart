@@ -35,8 +35,6 @@ class ProfilePage extends StatelessWidget {
   }
 }
 
-
-
 class ProfileOptionsList extends StatelessWidget {
   const ProfileOptionsList({super.key});
 
@@ -63,7 +61,10 @@ class ProfileOptionsList extends StatelessWidget {
             const CustomDivider(),
             CustomProfileListTile(
               profileTitleText: "List of Wards",
-              onTap: () {},
+              onTap: () {
+                // Navigator.push(context,
+                //     (MaterialPageRoute(builder: (context) => WardsPage())));
+              },
               profileLeadingIconName: "list-icon",
             ),
             const CustomDivider(),
@@ -93,7 +94,7 @@ class ProfileOptionsList extends StatelessWidget {
             const CustomDivider(),
             CustomProfileListTile(
               profileTitleText: "Log Out",
-              onTap: logoutController.signOut ,
+              onTap: logoutController.signOut,
               profileLeadingIconName: "logout-icon",
             ),
           ],

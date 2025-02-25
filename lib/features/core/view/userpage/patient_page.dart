@@ -1,4 +1,6 @@
+import 'package:nira/features/core/view/userpage/incubator_page.dart';
 import 'package:nira/imports.dart';
+import 'package:nira/widgets/custom_nav_button.dart';
 
 class PatientPage extends StatefulWidget {
   const PatientPage({super.key});
@@ -45,7 +47,8 @@ class _PatientPageState extends State<PatientPage> {
             onLeadingIconPressed: () => Navigator.pop(context),
             actionIcon: Icons.info,
             onActionIconPressed: () {
-              Navigator.push( context,
+              Navigator.push(
+                  context,
                   MaterialPageRoute(
                     builder: (context) => PatientInfoPage(),
                   ));
@@ -68,6 +71,17 @@ class _PatientPageState extends State<PatientPage> {
                         childAspectRatio: 1.5,
                       ),
                       children: [
+                        CustomNavigationButton(
+                          icon: Icons.lightbulb_circle,
+                          pageName: "Incubator",
+                          targetPage: IncubatorPage(),
+                        ),
+                        CustomNavigationButton(
+                          icon: Icons.bloodtype_outlined,
+                          pageName: "Blood Data",
+                          targetPage: BloodDataPage(),
+                        ),
+
                         UserdataContainer(
                           icon: Icon(
                             Icons.heart_broken,
@@ -90,18 +104,7 @@ class _PatientPageState extends State<PatientPage> {
                               patientData["respiration"]?.toString() ?? "N/A",
                           measure: "/min",
                         ),
-                        UserdataContainer(
-                          icon: Icon(
-                            Icons.thermostat,
-                            color: theme.iconTheme.color,
-                            size: 46,
-                          ),
-                          parameterName: "External Temperature",
-                          value:
-                              patientData["temperature"]?.toString() ?? "N/A",
-                          // value: "98.6",
-                          measure: "°F",
-                        ),
+                       
                         UserdataContainer(
                           icon: Icon(
                             Icons.thermostat,
@@ -121,60 +124,29 @@ class _PatientPageState extends State<PatientPage> {
                           measure: "ml",
                         ),
                         UserdataContainer(
-                          icon: Icon(Icons.thermostat,
-                              size: 45, color: theme.iconTheme.color),
+                          icon: Icon(
+                            Icons.scale,
+                            size: 45, 
+                            color: theme.iconTheme.color),
                           parameterName: "Body Weight",
                           value: patientData["body_weight"] ?? "N/A",
                           measure: "Kg",
                         ),
                         UserdataContainer(
-                          icon: Icon(Icons.water_drop,
-                              size: 45, color: theme.iconTheme.color),
-                          parameterName: "Humidity",
-                          value: patientData["humidity"] ?? "N/A",
-                          measure: "%",
-                        ),
-                        UserdataContainer(
-                          icon: Icon(Icons.air,
-                              size: 45, color: theme.iconTheme.color),
-                          parameterName: "Air Quality",
-                          value: patientData["air_quality"] ?? "N/A",
-                          measure: "AQI",
-                        ),
-                        UserdataContainer(
                           icon: Icon(Icons.heart_broken,
                               size: 45, color: theme.iconTheme.color),
-                          parameterName: "Heart Rate",
-                          value: patientData["heart_rate"] ?? "N/A",
-                          measure: "bpm",
+                          parameterName: "Blood Pressure",
+                          value: patientData["blood_pressure"] ?? "N/A",
+                          measure: "mmHg",
                         ),
-                        UserdataContainer(
-                          icon: Icon(Icons.water_drop,
-                              size: 45, color: theme.iconTheme.color),
-                          parameterName: "SpO2",
-                          value: patientData["spo2"] ?? "N/A",
-                          measure: "%",
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const BlooddataPage(),
-                              ),
-                            );
-                          },
-                          child: UserdataContainer(
-                            icon: Icon(
-                              Icons.bloodtype,
-                              color: theme.iconTheme.color,
-                              size: 45,
-                            ),
-                            parameterName: "Blood Data",
-                            value: "",
-                            measure: "",
-                          ),
-                        ),
+                        // UserdataContainer(
+                        //   icon: Icon(Icons.water_drop,
+                        //       size: 45, color: theme.iconTheme.color),
+                        //   parameterName: "SpO2",
+                        //   value: patientData["spo2"] ?? "N/A",
+                        //   measure: "%",
+                        // ),
+                      
                       ],
                     ),
                     const SizedBox(height: 8),

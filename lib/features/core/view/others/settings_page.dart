@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:nira/features/auth/controllers/logout_controller.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -16,6 +17,7 @@ class _SettingsPageState extends State<SettingsPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   bool _notificationsEnabled = true;
+
 
   @override
   void initState() {
@@ -55,16 +57,18 @@ class _SettingsPageState extends State<SettingsPage> {
     }
   }
 
-  void _logout() async {
-    await _auth.signOut();
-    Navigator.pushReplacementNamed(context, '/login');
-  }
+  // void _logout() async {
+  //   await _auth.signOut();
+  //   Navigator.pushReplacementNamed(context, '/login');
+  // }
 
   @override
   Widget build(BuildContext context) {
+  final logoutController = LogoutController(context: context);
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings'),
+        title: const Text('S E T T I N G S'),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -72,9 +76,11 @@ class _SettingsPageState extends State<SettingsPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Profile',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            Center(
+              child: const Text(
+                'Profile',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
             ),
             const SizedBox(height: 16),
             TextFormField(
@@ -102,9 +108,23 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
             const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: _updateProfile,
-              child: const Text('Update Profile'),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: _updateProfile,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor:
+                      Theme.of(context).primaryColor, // Use theme color
+                  foregroundColor: Colors.white, // Text color
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 24, vertical: 12), // Adjust padding
+                  textStyle: const TextStyle(fontSize: 16), // Adjust text size
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0), // Rounded corners
+                  ),
+                ),
+                child: const Text('Update Profile'),
+              ),
             ),
             const SizedBox(height: 32),
             const Text(
@@ -127,18 +147,41 @@ class _SettingsPageState extends State<SettingsPage> {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: _changePassword,
-              child: const Text('Change Password'),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: _changePassword,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Theme.of(context).primaryColor,
+                  foregroundColor: Colors.white,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  textStyle: const TextStyle(fontSize: 16),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                ),
+                child: const Text('Change Password'),
+              ),
             ),
             const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: _logout,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red, // Red color for logout button
-              ),
-              child: const Text('Logout'),
-            ),
+             SizedBox(
+              width: double.infinity,
+               child: ElevatedButton(
+                onPressed: logoutController.signOut,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red, // Red color for logout button
+                  foregroundColor: Colors.white,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  textStyle: const TextStyle(fontSize: 16),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                ),
+                child: const Text('Logout'),
+                           ),
+             ),
           ],
         ),
       ),

@@ -58,29 +58,24 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   children: [
                     //......................StaticUserContainer Widget.......................//
-                    // StaticUserContainer(
-                    //   childName: 'Rasma Kumar',
-                    //   parentName: 'Mr Avishek Kumar',
-                    //   dobDate: 'January 15, 2025',
-                    //   bedNumber: '18',
-                    //   contactNumber: '+9779876543212',
-                    // ),
-                    // StaticUserContainer(
-                    //   childName: '',
-                    //   parentName: '',
-                    //   dobDate: '',
-                    //   bedNumber: '',
-                    //   contactNumber: '',
-                    // ),
+                  
                     StaticUserContainer(
-                      childName: 'Rasma Kumar', 
-                      parentName:  'Mr Avishek Kumar', 
-                      dobDate: 'January 15, 2025', 
-                      // bedNumber: bedNumber, 
-                      contactNumber: '+9779876543212', 
+                      childName: 'Resma Kumar', 
+                      parentName: 'Mr Avisek Kumar', 
+                      dobDate: 'Jan-15-2025', 
+                      contact: '9876521212', 
                       gender: 'Female', 
-                      weight: '3.2 kg', 
-                      address: 'Durbar Square, Ktm'),
+                      weight: '1400 gram', 
+                      address: 'Balkumari,Ktm'),
+
+                       StaticUserContainer(
+                        childName: 'Kiran Kumar',
+                        parentName: 'Mr Mukesh Kumar',
+                        dobDate: 'Feb-18-2012',
+                        contact: '9876521212',
+                        gender: 'Maale',
+                        weight: '1560 gram',
+                        address: 'Dharan'),
                     
 
               //..............This is to create dynamic list of containers................//

@@ -25,7 +25,7 @@ class _PatientInfoPageState extends State<PatientInfoPage> {
             _buildInfoRow('Name', 'Rasma Kumar'),
             _buildInfoRow('Date of Birth', 'January 15, 2025'),
             _buildInfoRow('Gender', 'Female'),
-            _buildInfoRow('Weight', '3.2 kg'),
+            _buildInfoRow('Weight', '1400 gram'),
             _buildInfoRow('Blood Group', 'O+'),
             _buildInfoRow('Mothers Name', 'Mrs Priyanka Chopra'),
             _buildInfoRow('Fathers Name', 'Mr Avishek Kumar'),
