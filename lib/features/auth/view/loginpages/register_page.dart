@@ -64,7 +64,7 @@ class _RegisterPageState extends State<RegisterPage> {
           child: Container( // Changed to Container for background image
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('lib/assets/register2.png'),
+                image: AssetImage('assets/register2.png'),
                 fit: BoxFit.cover,
               ),
             ),

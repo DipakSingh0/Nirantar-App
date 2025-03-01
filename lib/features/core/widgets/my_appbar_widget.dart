@@ -32,7 +32,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
               icon: Icon(
                 leadingIcon,
                 color: theme.iconTheme.color,
-                size: 32,
+                size: 40,
               ),
               onPressed: onLeadingIconPressed ?? () {},
             )

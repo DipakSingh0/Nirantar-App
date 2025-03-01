@@ -35,10 +35,10 @@ class _IntroScreenState extends State<IntroScreen> {
                 });
               },
               // ignore: prefer_const_literals_to_create_immutables
-              children: [
-                const IntroPage1(),
-                const IntroPage2(),
-                const IntroPage3(),
+              children: const [
+                 IntroPage1(),
+                 IntroPage2(),
+                 IntroPage3(),
               ],
             ),
 

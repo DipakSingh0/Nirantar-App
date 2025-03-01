@@ -7,6 +7,8 @@ class RegisterForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+  // var theme = Theme.of(context);
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -66,9 +68,12 @@ Widget buildTextField(TextEditingController controller, String hintText) {
       filled: true,
       hintText: hintText,
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(12),
       ),
+      
     ),
+    style: TextStyle(color: Colors.black),
+
   );
 }
 
@@ -80,9 +85,12 @@ Widget buildPasswordField(TextEditingController controller, String hintText) {
       filled: true,
       hintText: hintText,
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(12),
       ),
+      
     ),
+    style: TextStyle(color: Colors.black),
+
     obscureText: true,
   );
 }

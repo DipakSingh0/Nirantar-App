@@ -23,7 +23,7 @@ class ForgotPasswordPage extends StatelessWidget {
                 height: screenSize.height,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('lib/assets/register.png'),
+                    image: AssetImage('assets/register.png'),
                     fit: BoxFit.cover,
                   ),
                 ),

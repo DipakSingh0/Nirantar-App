@@ -14,7 +14,7 @@ class IntroPage1 extends StatelessWidget {
         height: screenSize.width / aspectRatio,
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('lib/assets/intro1.jpeg'),
+            image: AssetImage('assets/intro1.jpeg'),
             fit: BoxFit.cover,
           ),
         ),

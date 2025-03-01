@@ -1,8 +1,5 @@
 // ignore_for_file: avoid_print
-
-import 'package:nira/features/core/controller/incubator_data_controller.dart';
 import 'package:nira/imports.dart';
-import 'package:nira/widgets/incubator_slider.dart';
 
 class IncubatorPage extends StatefulWidget {
   const IncubatorPage({super.key});
@@ -52,7 +49,7 @@ class _IncubatorPageState extends State<IncubatorPage> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => PatientInfoPage(),
+                    builder: (context) => InucubatorInfoPage(),
                   ));
             }),
         body: isLoading

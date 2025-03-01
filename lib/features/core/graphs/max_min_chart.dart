@@ -17,7 +17,6 @@ class WeeklyBarChart extends StatelessWidget {
         alignment: BarChartAlignment.spaceAround,
         minY: 30,
         maxY: 200,
-
         barGroups: List.generate(7, (index) => _buildBarGroup(index)),
         // barGroupSpacing: 10,
         titlesData: FlTitlesData(

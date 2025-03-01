@@ -106,7 +106,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:nira/features/core/controller/contacts_controller.dart';
-import 'package:nira/widgets/my_appbar_widget.dart';
+import 'package:nira/features/core/widgets/my_appbar_widget.dart';
 
 class ContactsPage extends StatefulWidget {
   const ContactsPage({super.key});

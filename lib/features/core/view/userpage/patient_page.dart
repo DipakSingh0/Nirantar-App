@@ -1,6 +1,6 @@
 import 'package:nira/features/core/view/userpage/incubator_page.dart';
 import 'package:nira/imports.dart';
-import 'package:nira/widgets/custom_nav_button.dart';
+import 'package:nira/features/core/widgets/custom_nav_button.dart';
 
 class PatientPage extends StatefulWidget {
   const PatientPage({super.key});

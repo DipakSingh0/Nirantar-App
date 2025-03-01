@@ -32,7 +32,7 @@ class _VerificationCodeState extends State<VerificationCode> {
                     height: screenSize.height,
                     decoration: const BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage('lib/assets/register.png'),
+                        image: AssetImage('assets/register.png'),
                         fit: BoxFit.cover,
                       ),
                     ),

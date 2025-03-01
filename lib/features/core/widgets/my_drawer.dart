@@ -12,7 +12,7 @@ class _MyDrawerState extends State<MyDrawer> {
 
   @override
   Widget build(BuildContext context) {
-    // var theme = Theme.of(context);
+    var theme = Theme.of(context);
     return Drawer(
       child: SingleChildScrollView(
         child: Column(
@@ -21,42 +21,44 @@ class _MyDrawerState extends State<MyDrawer> {
             const SizedBox(
               height: 10,
             ),
-            myDrawerList(),
+            // myDrawerList(),
+            Container(
+              color: theme.scaffoldBackgroundColor,
+              child: Column(
+                children: [
+                  const CustomDivider(),
+                  menuItem(1, "Profile", Icons.dashboard_outlined,
+                      currentPage == DrawerSections.homepage ? true : false),
+                  const CustomDivider(),
+                  menuItem(2, "Contacts", Icons.perm_contact_calendar_rounded,
+                      currentPage == DrawerSections.homepage ? true : false),
+                  const CustomDivider(),
+                  menuItem(3, "Notifications", Icons.notifications,
+                      currentPage == DrawerSections.homepage ? true : false),
+                  const CustomDivider(),
+                  menuItem(4, "Settings", Icons.settings,
+                      currentPage == DrawerSections.homepage ? true : false),
+                  const CustomDivider(),
+                  menuItem(5, "Privacy Policy", Icons.privacy_tip_sharp,
+                      currentPage == DrawerSections.homepage ? true : false),
+                  const CustomDivider(),
+                  menuItem(6, "Send Feedback", Icons.feedback,
+                      currentPage == DrawerSections.homepage ? true : false),
+                  const CustomDivider(),
+                ],
+              ),
+            )
           ],
         ),
       ),
     );
   }
 
-  Widget myDrawerList() {
-    var theme = Theme.of(context);
-    return Container(
-      color: theme.scaffoldBackgroundColor,
-      child: Column(
-        children: [
-          const CustomDivider(),
-          menuItem(1, "Profile", Icons.dashboard_outlined,
-              currentPage == DrawerSections.homepage ? true : false),
-          const CustomDivider(),
-          menuItem(2, "Contacts", Icons.perm_contact_calendar_rounded,
-              currentPage == DrawerSections.homepage ? true : false),
-          const CustomDivider(),
-          menuItem(3, "Notifications", Icons.notifications,
-              currentPage == DrawerSections.homepage ? true : false),
-          const CustomDivider(),
-          menuItem(4, "Settings", Icons.settings,
-              currentPage == DrawerSections.homepage ? true : false),
-          const CustomDivider(),
-          menuItem(5, "Privacy Policy", Icons.privacy_tip_sharp,
-              currentPage == DrawerSections.homepage ? true : false),
-          const CustomDivider(),
-          menuItem(6, "Send Feedback", Icons.feedback,
-              currentPage == DrawerSections.homepage ? true : false),
-          const CustomDivider(),
-        ],
-      ),
-    );
-  }
+  // Widget myDrawerList() {
+  //   var theme = Theme.of(context);
+  //   return
+
+  // }
 
   Widget menuItem(int id, String title, IconData icon, bool selected) {
     var theme = Theme.of(context);
@@ -152,7 +154,7 @@ class _MyHeaderDrawerState extends State<MyHeaderDrawer> {
                   shape: BoxShape.circle,
                   image: DecorationImage(
                     image: AssetImage(
-                      'lib/assets/admin.jpg',
+                      'assets/admin.jpg',
                     ),
                   )),
             ),

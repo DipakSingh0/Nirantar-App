@@ -1,6 +1,4 @@
-
 import 'package:nira/imports.dart';
-
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -39,7 +37,7 @@ Widget build(BuildContext context) {
       body: Container( 
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('lib/assets/register.png'),
+            image: AssetImage('assets/register2.png'),
             fit: BoxFit.cover,
           ),
         ),

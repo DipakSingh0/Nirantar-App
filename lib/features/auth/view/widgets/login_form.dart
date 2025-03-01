@@ -7,6 +7,7 @@ class LoginForm extends StatelessWidget {
   Widget build(BuildContext context) {
     final emailController = TextEditingController();
     final passwordController = TextEditingController();
+    var theme = Theme.of(context);
     final loginController = LoginController(
       context: context,
       emailController: emailController,
@@ -23,9 +24,10 @@ class LoginForm extends StatelessWidget {
             filled: true,
             hintText: 'Email',
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(12),
             ),
           ),
+          style: TextStyle(color: theme.colorScheme.onPrimary),
         ),
         const SizedBox(height: 18),
 
@@ -37,10 +39,12 @@ class LoginForm extends StatelessWidget {
             filled: true,
             hintText: 'Password',
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(12),
             ),
           ),
           obscureText: true,
+          style: TextStyle(color: theme.colorScheme.onPrimary),
+
         ),
         const SizedBox(height: 15),
 
