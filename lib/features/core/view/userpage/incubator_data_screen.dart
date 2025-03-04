@@ -1,122 +1,203 @@
-import 'package:http/http.dart' as http;
+// ignore_for_file: avoid_print
+import 'package:nira/features/core/view/userpage/data_fetch_screen.dart';
 import 'package:nira/imports.dart';
 
-class IncubatorDataScreen extends StatefulWidget {
-  const IncubatorDataScreen({super.key});
+class IncubatorPage extends StatefulWidget {
+  const IncubatorPage({super.key});
 
   @override
-  _IncubatorDataScreenState createState() => _IncubatorDataScreenState();
+  State<IncubatorPage> createState() => _IncubatorPageState();
 }
 
-class _IncubatorDataScreenState extends State<IncubatorDataScreen> {
-  final List<Map<String, dynamic>> _dataList = [];
-  bool _isLoading = true;
-  String _errorMessage = '';
-  Timer? _timer;
+class _IncubatorPageState extends State<IncubatorPage> {
+  final IncubatorController _controller = IncubatorController();
+  Map<String, dynamic> incubatorData = {};
+  bool isLoading = true;
 
   @override
   void initState() {
     super.initState();
-    _fetchData();
-    _startTimer();
+    _loadIncubatorData();
   }
 
-  @override
-  void dispose() {
-    _timer?.cancel();
-    super.dispose();
-  }
-
-  void _startTimer() {
-    _timer = Timer.periodic(Duration(seconds: 5), (Timer timer) {
-      _fetchData();
+  Future<void> _loadIncubatorData() async {
+    setState(() {
+      isLoading = true;
     });
-  }
-
-  Future<void> _fetchData() async {
-    final url = Uri.parse('http://localhost:3000/api/data');
 
     try {
-      final response = await http.get(url);
+      Map<String, dynamic> fetchedData =
+          await _controller.fetchIncubatorData(context);
 
-      print('Response status code: ${response.statusCode}');
-      print('Response body: ${response.body}');
+      print('Fetched data: $fetchedData'); // Debugging
 
-      if (response.statusCode == 200) {
-        // Decode the response body
-        final Map<String, dynamic> responseData = json.decode(response.body);
-
-        // Add the new data to the list
-        setState(() {
-          _dataList.insert(
-              0, responseData); // Insert at the beginning of the list
-          if (_dataList.length > 10) {
-            _dataList.removeLast(); // Keep only the last 10 entries
-          }
-          _isLoading = false;
-        });
-      } else {
-        setState(() {
-          _errorMessage = 'Failed to load data: ${response.statusCode}';
-          _isLoading = false;
-        });
-      }
-    } catch (e) {
       setState(() {
-        _errorMessage = 'Error fetching data: ${e.toString()}';
-        _isLoading = false;
+        incubatorData = fetchedData;
+        isLoading = false;
+      });
+    } catch (e) {
+      print('Error loading incubator data: $e'); // Debugging
+      setState(() {
+        isLoading = false;
       });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: MyAppBar(
-          title: 'I O T - D A T A',
-          leadingIcon: Icons.arrow_back,
-          onLeadingIconPressed: () => Navigator.pop(context),
-          actionIcon: Icons.refresh,
-          onActionIconPressed: () {
-            
-              _fetchData();
-            
-          }),
-     
-      body: _isLoading
-          ? Center(child: CircularProgressIndicator())
-          : _errorMessage.isNotEmpty
-              ? Center(child: Text(_errorMessage))
-              : _dataList.isNotEmpty
-                  ? ListView.builder(
-                      padding: const EdgeInsets.all(16.0),
-                      itemCount: _dataList.length,
-                      itemBuilder: (context, index) {
-                        final data = _dataList[index];
-                        return Card(
-                          margin: const EdgeInsets.only(bottom: 16.0),
-                          child: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                    'Heart Rate: ${data['Heart Rate'] ?? 'N/A'}'),
-                                Text(
-                                    'Body Temperature: ${data['Body Temperature'] ?? 'N/A'}'),
-                                Text(
-                                    'Respiration Rate: ${data['Respiration Rate'] ?? 'N/A'}'),
-                                Text(
-                                    'Blood Oxygen Level: ${data['Blood Oxygen Level'] ?? 'N/A'}'),
-                                Text(
-                                    'Timestamp: ${data['updated_at'] ?? 'N/A'}'),
-                              ],
-                            ),
+    var theme = Theme.of(context);
+
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: theme.scaffoldBackgroundColor,
+        appBar: MyAppBar(
+            title: 'I N C U B A T O R - D A T A',
+            leadingIcon: Icons.arrow_back,
+            onLeadingIconPressed: () => Navigator.pop(context),
+            actionIcon: Icons.info,
+            onActionIconPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DataFetchScreen(),
+                  ));
+            }),
+        body: isLoading
+            ? const Center(child: CircularProgressIndicator())
+            : SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const SizedBox(height: 20),
+                    // GridView for IncubatordataContainers
+                    GridView(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 12,
+                        crossAxisSpacing: 12,
+                        childAspectRatio: 1.5,
+                      ),
+                      children: [
+                        UserdataContainer(
+                          icon: Icon(
+                            Icons.thermostat,
+                            color: theme.iconTheme.color,
+                            size: 46,
                           ),
-                        );
-                      },
-                    )
-                  : Center(child: Text('No data available')),
+                          parameterName: "Incubator Temperature",
+                          value:
+                              incubatorData["temperature"]?.toString() ?? "N/A",
+                          measure: "°F",
+                        ),
+                        UserdataContainer(
+                          icon: Icon(Icons.medical_services,
+                              size: 45, color: theme.iconTheme.color),
+                          parameterName: "Saline Volume",
+                          value: incubatorData["saline_volume"]?.toString() ??
+                              "N/A",
+                          measure: "ml/min",
+                        ),
+                        UserdataContainer(
+                          icon: Icon(Icons.water_drop,
+                              size: 45, color: theme.iconTheme.color),
+                          parameterName: "Humidity",
+                          value: incubatorData["humidity"]?.toString() ?? "N/A",
+                          measure: "%",
+                        ),
+                        UserdataContainer(
+                          icon: Icon(Icons.air,
+                              size: 45, color: theme.iconTheme.color),
+                          parameterName: "Air Quality",
+                          value:
+                              incubatorData["air_quality"]?.toString() ?? "N/A",
+                          measure: "ppm",
+                        ),
+                        // IncubatorSlider(
+                        //   parameterName: "Temperature",
+                        //   initialValue: double.tryParse(
+                        //           incubatorData["temperature"]?.toString() ??
+                        //               "96.0") ??
+                        //       96.0,
+                        //   minValue: 95.5,
+                        //   maxValue: 99.5,
+                        //   unit: "°F",
+                        //   onValueChanged: (double newValue) {
+                        //     print("Temperature Level changed: $newValue");
+                        //   },
+                        // ),
+                        // IncubatorSlider(
+                        //   parameterName: "Temperature",
+                        //   initialValue: double.tryParse(
+                        //           incubatorData["humidity"]?.toString() ??
+                        //               "97.0") ??
+                        //       97.0,
+                        //   minValue: 95.5,
+                        //   maxValue: 99.5,
+                        //   unit: "°F",
+                        //   onValueChanged: (double newValue) {
+                        //     print("Temperature changed: $newValue");
+                        //   },
+                        // ),
+                        IncubatorSlider(
+                          parameterName: "Temperature",
+                          initialValue: double.tryParse(
+                                  incubatorData["temperature"]?.toString() ??
+                                      "97.0") ??
+                              97.0,
+                          minValue: 20,
+                          maxValue: 99,
+                          unit: "%",
+                          onValueChanged: (double newValue) {
+                            print("Humidity Level changed: $newValue");
+                          },
+                        ),
+                        IncubatorSlider(
+                          parameterName: "Humidity",
+                          initialValue: double.tryParse(
+                                  incubatorData["humidity"]?.toString() ??
+                                      "68.0") ??
+                              68.0,
+                          minValue: 60,
+                          maxValue: 80,
+                          unit: "%",
+                          onValueChanged: (double newValue) {
+                            print("Humidity Level changed: $newValue");
+                          },
+                        ),
+                        IncubatorSlider(
+                          parameterName: "Oxygen Level",
+                          initialValue: double.tryParse(
+                                  incubatorData["oxygen"]?.toString() ??
+                                      "91.0") ??
+                              91.0,
+                          minValue: 90,
+                          maxValue: 95,
+                          unit: "%",
+                          onValueChanged: (double newValue) {
+                            print("Oxygen Level changed: $newValue");
+                          },
+                        ),
+                        IncubatorSlider(
+                          parameterName: "CO2 Level",
+                          initialValue: double.tryParse(
+                                  incubatorData["co2"]?.toString() ?? "5.2") ??
+                              5.2,
+                          minValue: 5,
+                          maxValue: 10,
+                          unit: "%",
+                          onValueChanged: (double newValue) {
+                            print("CO2 Level changed: $newValue");
+                          },
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+      ),
     );
   }
 }

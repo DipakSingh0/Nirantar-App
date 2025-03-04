@@ -1,5 +1,5 @@
 import 'package:nira/features/core/graphs/line_chart_4.dart';
-import 'package:nira/features/core/view/userpage/data_fetch_screen.dart';
+import 'package:nira/features/core/view/userpage/incubator_data_screen.dart';
 import 'package:nira/imports.dart';
 import 'package:nira/features/core/widgets/custom_nav_button.dart';
 
@@ -85,7 +85,7 @@ class _PatientPageState extends State<PatientPage> {
                         CustomNavigationButton(
                           icon: Icons.lightbulb_circle,
                           pageName: "Incubator",
-                          targetPage: DataFetchScreen(),
+                          targetPage: IncubatorPage(),
                         ),
                         CustomNavigationButton(
                           icon: Icons.bloodtype_outlined,
