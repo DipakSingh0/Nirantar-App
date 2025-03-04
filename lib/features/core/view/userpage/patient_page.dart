@@ -1,4 +1,5 @@
-import 'package:nira/features/core/view/userpage/incubator_page.dart';
+import 'package:nira/features/core/graphs/line_chart_4.dart';
+import 'package:nira/features/core/view/userpage/data_fetch_screen.dart';
 import 'package:nira/imports.dart';
 import 'package:nira/features/core/widgets/custom_nav_button.dart';
 
@@ -33,6 +34,16 @@ class _PatientPageState extends State<PatientPage> {
       isLoading = false;
     });
   }
+  List<Map<String, dynamic>> chartData = [
+    {'x': 0, 'y': 4},
+    {'x': 1, 'y': 3.5},
+    {'x': 2, 'y': 4.5},
+    {'x': 3, 'y': 1},
+    {'x': 4, 'y': 4},
+    {'x': 5, 'y': 6},
+    {'x': 6, 'y': 6.5},
+    {'x': 7, 'y': 6},
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +85,7 @@ class _PatientPageState extends State<PatientPage> {
                         CustomNavigationButton(
                           icon: Icons.lightbulb_circle,
                           pageName: "Incubator",
-                          targetPage: IncubatorPage(),
+                          targetPage: DataFetchScreen(),
                         ),
                         CustomNavigationButton(
                           icon: Icons.bloodtype_outlined,
@@ -220,15 +231,41 @@ class _PatientPageState extends State<PatientPage> {
                       height: 200,
                       width: 500,
                       decoration: BoxDecoration(
-                          color: theme.cardColor,
-                          borderRadius: BorderRadius.circular(20)),
-                      child: const BarChartSample3(),
+                        color: theme.cardColor,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          top: 5.0,
+                          right: 5,
+                        ),
+                        child: LineChartSample4(
+                          data: chartData,
+                        ),
+                      ),
                     ),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 8),
+
                     Text(
                       'Respiration Rate',
                       style: theme.textTheme.displayLarge,
                     ),
+
+                    const SizedBox(height: 8),
+
+                    // Container(
+                    //   height: 200,
+                    //   width: 500,
+                    //   decoration: BoxDecoration(
+                    //       color: theme.cardColor,
+                    //       borderRadius: BorderRadius.circular(20)),
+                    //   child: const BarChartSample3(),
+                    // ),
+                    // const SizedBox(height: 10),
+                    // Text(
+                    //   'Respiration Rate',
+                    //   style: theme.textTheme.displayLarge,
+                    // ),
 
                     const Divider(),
                     const SizedBox(height: 12),

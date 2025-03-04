@@ -1,17 +1,10 @@
-
 import 'package:nira/imports.dart';
-
-// import 'dart:convert';
-// import 'package:flutter/material.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
-// import '../model/contacts_model.dart';
 
 class ContactsController {
   final TextEditingController nameController;
   final TextEditingController phoneController;
   final TextEditingController emailController;
   final TextEditingController addressController;
-
 
   List<Contact> contacts = [];
 
@@ -149,53 +142,4 @@ class ContactsController {
   }
 }
 
-
-
-
-
-// class ContactsController with ChangeNotifier {
-//   List<Contact> _contacts = [];
-
-//   List<Contact> get contacts => _contacts;
-
-//   // Load contacts from SharedPreferences
-//   Future<void> loadContacts() async {
-//     final prefs = await SharedPreferences.getInstance();
-//     final contactsJson = prefs.getStringList('contacts') ?? [];
-//     _contacts = contactsJson.map((json) => Contact.fromMap(json as Map<String, dynamic>)).toList();
-//     notifyListeners();
-//   }
-
-//   // Save contacts to SharedPreferences
-//   Future<void> _saveContacts() async {
-//     final prefs = await SharedPreferences.getInstance();
-//     final contactsJson = _contacts.map((contact) => contact.toMap()).toList();
-//     prefs.setStringList('contacts', contactsJson.cast<String>());
-//   }
-
-//   // Add a new contact
-//   Future<void> addContact(Contact contact) async {
-//     _contacts.add(contact);
-//     await _saveContacts();
-//     notifyListeners();
-//   }
-
-//   // Edit an existing contact
-//   Future<void> editContact(
-//       String id, String name, String phone, String email) async {
-//     final contact = _contacts.firstWhere((c) => c.id == id);
-//     contact.name = name;
-//     contact.phone = phone;
-//     contact.email = email;
-//     await _saveContacts();
-//     notifyListeners();
-//   }
-
-//   // Delete a contact
-//   Future<void> deleteContact(String id) async {
-//     _contacts.removeWhere((c) => c.id == id);
-//     await _saveContacts();
-//     notifyListeners();
-//   }
-// }
 

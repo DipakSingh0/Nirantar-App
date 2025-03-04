@@ -202,16 +202,18 @@ class _HomePageState extends State<HomePage> {
                       children: [
                          UserdataContainer(
                           icon: Icon(Icons.heart_broken,
-                              size: 45, color: theme.iconTheme.color),
+                              size: 30,
+                               color: theme.iconTheme.color),
                           parameterName: "Heart Rate",
                           value: patientData["heart_rate"] ?? "N/A",
                           measure: "bpm",
+                          
                         ),
                           UserdataContainer(
                           icon: Icon(
                             Icons.air,
                             color: theme.iconTheme.color,
-                            size: 45,
+                            size: 30,
                           ),
                           parameterName: "Respiration",
                           value:
@@ -222,7 +224,7 @@ class _HomePageState extends State<HomePage> {
                           icon: Icon(
                             Icons.thermostat,
                             color: theme.iconTheme.color,
-                            size: 46,
+                            size: 30,
                           ),
                           parameterName: "External Temperature",
                           value:
@@ -234,7 +236,7 @@ class _HomePageState extends State<HomePage> {
                           icon: Icon(
                             Icons.thermostat,
                             color: theme.iconTheme.color,
-                            size: 46,
+                            size: 30,
                           ),
                           parameterName: "Body Temperature",
                           value: patientData["body_temp"]?.toString() ?? "N/A",

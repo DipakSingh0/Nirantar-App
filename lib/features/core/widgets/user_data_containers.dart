@@ -9,6 +9,7 @@ class UserdataContainer extends StatelessWidget {
   final String value;
   final String measure;
   final Icon icon;
+  // final double iconSize;
 
   const UserdataContainer({
     super.key,
@@ -16,6 +17,7 @@ class UserdataContainer extends StatelessWidget {
     required this.value,
     required this.measure,
     required this.icon,
+    // required this.iconSize,
   });
 
   @override
@@ -24,8 +26,8 @@ class UserdataContainer extends StatelessWidget {
 
     return SafeArea(
       child: Container(
-        height: 60,
-        width: 60,
+        height: 70,
+        width: 75,
         decoration: BoxDecoration(
           color: theme.cardColor,
           borderRadius: BorderRadius.circular(20),
@@ -33,31 +35,37 @@ class UserdataContainer extends StatelessWidget {
         child: LayoutBuilder(
           builder: (context, constraints) {
             return Padding(
-              padding: const EdgeInsets.all(4.0),
+              padding: const EdgeInsets.all(3.0),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 15.0, left: 2),
+                    padding: const EdgeInsets.only(top: 15.0, left: 0),
+        //-------------- parameter icon and name --------------//
+              
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      // crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Expanded(
-                          flex: 1,
+                          flex: 3,
                           child: SizedBox(
-                            width: 10,
+                            width: 7,
                             child: icon,
+                            
                           ),
                         ),
-                        const SizedBox(
-                          width: 3,
-                        ),
+                        // const SizedBox(
+                        //   width: 1,
+                        // ),
                         Expanded(
-                          flex: 3,
+                          flex: 5,
                           child: Text(
                             parameterName,
                             style:
                                 Theme.of(context).textTheme.bodySmall?.copyWith(
-                                      fontSize: 12,
+                                      fontSize: 10,
                                       fontWeight: FontWeight.w800,
                                     ),
                           ),
@@ -65,8 +73,10 @@ class UserdataContainer extends StatelessWidget {
                       ],
                     ),
                   ),
+
+        //-------------- parameter value and measure unit --------------//
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 8.0),
+                    padding: const EdgeInsets.only(bottom: 6.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -74,7 +84,7 @@ class UserdataContainer extends StatelessWidget {
                           value,
                           style:
                               Theme.of(context).textTheme.labelMedium?.copyWith(
-                                    fontSize: 16,
+                                    fontSize: 15,
                                     fontWeight: FontWeight.bold,
                                   ),
                         ),
@@ -85,7 +95,7 @@ class UserdataContainer extends StatelessWidget {
                           measure,
                           style:
                               Theme.of(context).textTheme.labelMedium?.copyWith(
-                                    fontSize: 20,
+                                    fontSize: 18,
                                     fontWeight: FontWeight.w400,
                                   ),
                         ),

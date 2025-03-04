@@ -64,7 +64,7 @@ class _StaticUserContainerState extends State<StaticUserContainer> {
           );
         },
         child: Container(
-          height: 240,
+          height: 250,
           width: 540,
           margin: const EdgeInsets.only(top: 8.0),
           decoration: BoxDecoration(
@@ -151,16 +151,17 @@ class _StaticUserContainerState extends State<StaticUserContainer> {
                       children: [
                         UserdataContainer(
                           icon: Icon(Icons.heart_broken,
-                              size: 45, color: theme.iconTheme.color),
+                              size: 30, color: theme.iconTheme.color),
                           parameterName: "Heart Rate",
                           value: patientData["heart_rate"] ?? "N/A",
                           measure: "bpm",
+                          
                         ),
                         UserdataContainer(
                           icon: Icon(
                             Icons.air,
                             color: theme.iconTheme.color,
-                            size: 45,
+                            size: 30,
                           ),
                           parameterName: "Respiration",
                           value:
@@ -171,7 +172,7 @@ class _StaticUserContainerState extends State<StaticUserContainer> {
                           icon: Icon(
                             Icons.health_and_safety,
                             color: theme.iconTheme.color,
-                            size: 46,
+                            size: 30,
                           ),
                           parameterName: "Blood Pressure",
                           value:
@@ -182,7 +183,7 @@ class _StaticUserContainerState extends State<StaticUserContainer> {
                           icon: Icon(
                             Icons.thermostat,
                             color: theme.iconTheme.color,
-                            size: 46,
+                            size: 30,
                           ),
                           parameterName: "Body Temperature",
                           value: patientData["body_temp"]?.toString() ?? "N/A",

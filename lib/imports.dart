@@ -26,14 +26,14 @@ export 'package:nira/features/core/controller/patient_controller.dart';
 
 
 // ------------AUTH PAGES ....................//
-export 'package:nira/features/auth/view/widgets/register_footer.dart';
-export 'package:nira/features/auth/view/widgets/register_form.dart';
+export 'package:nira/features/auth/widgets/register_footer.dart';
+export 'package:nira/features/auth/widgets/register_form.dart';
 export 'package:nira/features/auth/view/loginpages/login_page.dart';
 export 'package:nira/features/auth/view/loginpages/password_verification.dart';
 export 'package:nira/features/auth/view/loginpages/verification_code.dart';
 export 'package:nira/features/auth/view/loginpages/register_page.dart';
-export 'package:nira/features/auth/view/widgets/login_footer.dart';
-export 'package:nira/features/auth/view/widgets/login_form.dart';
+export 'package:nira/features/auth/widgets/login_footer.dart';
+export 'package:nira/features/auth/widgets/login_form.dart';
 
 
 // ------------ WIDGHETS ....................//
@@ -67,8 +67,15 @@ export 'package:nira/features/core/view/userpage/profile_page.dart';
 export 'package:nira/features/core/widgets/user_data_containers.dart';
 
 export 'package:firebase_core/firebase_core.dart';
-export 'package:nira/firebase_options.dart';
 export 'package:nira/features/auth/view/introscreens/introduction_screen.dart';
 export 'package:nira/features/core/widgets/theme.dart';
 export 'package:nira/features/auth/controllers/logout_controller.dart';
 export 'package:nira/features/core/widgets/profile_header.dart';
+
+
+
+export 'dart:async';
+export 'package:nira/features/core/model/iot_data.dart';
+export 'package:nira/features/core/services/iot_api_services.dart';
+export 'package:syncfusion_flutter_charts/charts.dart';
+export 'package:nira/constants/constants.dart';
