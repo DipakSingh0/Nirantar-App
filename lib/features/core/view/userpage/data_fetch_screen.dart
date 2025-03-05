@@ -36,7 +36,7 @@ class _DataFetchScreenState extends State<DataFetchScreen> {
   }
 
   Future<void> _fetchData() async {
-    final url = Uri.parse('http://192.168.1.73:3000/api/data');
+    final url = Uri.parse('http://localhost:3000/api/data');
 
     try {
       final response = await http.get(url);

@@ -34,13 +34,17 @@ Widget build(BuildContext context) {
   return SafeArea(
     child: Scaffold(
       resizeToAvoidBottomInset: true,
-      body: Container( 
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/register2.png'),
-            fit: BoxFit.cover,
-          ),
-        ),
+      body: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).unfocus(); 
+          },
+          child: Container( 
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/register2.png'),
+                fit: BoxFit.cover,
+              ),
+            ),
         child: SafeArea(
           child: SingleChildScrollView(
             child: Stack( 
@@ -72,5 +76,5 @@ Widget build(BuildContext context) {
         ),
       ),
     ),
-  );
+  ));
 }}

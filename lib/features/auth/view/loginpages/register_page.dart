@@ -56,12 +56,12 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        resizeToAvoidBottomInset: true, // Key change here!
-        body: GestureDetector( // Added GestureDetector
+        resizeToAvoidBottomInset: true, 
+        body: GestureDetector(
           onTap: () {
-            FocusScope.of(context).unfocus(); // Dismiss keyboard on tap outside
+            FocusScope.of(context).unfocus(); 
           },
-          child: Container( // Changed to Container for background image
+          child: Container( 
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/register2.png'),
@@ -81,12 +81,12 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
               ),
-              body: SingleChildScrollView( // Added SingleChildScrollView
-                padding: const EdgeInsets.all(16.0), // Add some padding
+              body: SingleChildScrollView( 
+                padding: const EdgeInsets.all(16.0),
                 child: Column(
                   children: [
                     RegisterForm(controller: _controller),
-                    const SizedBox(height: 20), // Add spacing
+                    const SizedBox(height: 20),
                     const RegisterFooter(),
                   ],
                 ),
